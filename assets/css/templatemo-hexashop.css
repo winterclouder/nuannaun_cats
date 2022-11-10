@@ -255,7 +255,7 @@ header
 .header-area .main-nav .logo {
   line-height: 100px;
   color: #1E1E1E;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -677,7 +677,7 @@ banner
 }
 
 .main-banner .left-content .inner-content span {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
   font-weight: 400;
   font-style: italic;
@@ -701,7 +701,7 @@ banner
 
 .main-banner .right-content .right-first-image .thumb .inner-content {
   position: absolute;
-  top: 50%;
+  top: 80%;
   transform: translateY(-50%);
   width: 100%;
   text-align: center;
@@ -709,13 +709,13 @@ banner
 
 .main-banner .right-content .right-first-image .thumb .inner-content h4 {
   color: #fff;
-  font-size: 24px;
+  font-size: 34px;
   font-weight: 700;
   margin-bottom: 15px;
 }
 
 .main-banner .right-content .right-first-image .thumb .inner-content span {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
   font-style: italic;
 }
@@ -1574,18 +1574,17 @@ footer .under-footer a:hover {
 Products Page
 --------------------------------------------- 
 */
-
 .page-heading {
   margin-top: 160px;
   margin-bottom: 30px;
-  background-image: url(../images/products-page-heading.jpg);
+  background-image: url(https://i.imgur.com/CWBxGmW.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .page-heading .inner-content {
-  padding: 150px 0px;
+  padding: 200px 0px;
   text-align: center;
 }
 

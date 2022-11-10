@@ -321,13 +321,13 @@
 			});
 		}
 		$("#preloader").css("visibility", "hidden")
-		// $("#preloader").animate({
-		// 	'opacity': '0'
-		// }, 600, function(){
-		// 	setTimeout(function(){
-		// 		$("#preloader").css("visibility", "hidden").fadeOut();
-		// 	}, 300);
-		// });
+		$("#preloader").animate({
+			'opacity': '0'
+		}, 600, function(){
+			setTimeout(function(){
+				$("#preloader").css("visibility", "hidden").fadeOut();
+			}, 300);
+		});
 	});
 
 
@@ -349,7 +349,6 @@
 	}
 	const ACCESSTOKEN = 'bd0cb9b01c3f3cae3322ccce3e4a47d9bea4029b'
 	const REFRESHTOKEN = '7237de6b05ba4da652b1c740a690e3d96724986f'
-	const token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjVkMzQwZGRiYzNjNWJhY2M0Y2VlMWZiOWQxNmU5ODM3ZWM2MTYzZWIiLCJ0eXAiOiJKV1QifQ.eyJwcm92aWRlcl9pZCI6ImFub255bW91cyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9hZ2VudC1qaW5mbS10ZXN0LWFiZ3FydCIsImF1ZCI6ImFnZW50LWppbmZtLXRlc3QtYWJncXJ0IiwiYXV0aF90aW1lIjoxNjY1NjU0ODkzLCJ1c2VyX2lkIjoidEdCTlA1aGk1SFNlU3Voc3VxYWFnRFNPb1J2MiIsInN1YiI6InRHQk5QNWhpNUhTZVN1aHN1cWFhZ0RTT29SdjIiLCJpYXQiOjE2NjYzMzYwNTQsImV4cCI6MTY2NjMzOTY1NCwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6e30sInNpZ25faW5fcHJvdmlkZXIiOiJhbm9ueW1vdXMifX0.Y-s4nyqFHXMzpFgAvKCUwmhwibN-YesHYz2gKM49Iqsx9uFEl91lu-43vioKhsidBQScsn754AS3WLDsefXe19Te1o06A8ReqtXwEXtw_RGHJ2eTlSMcWuJ86G5aJDdZJSWCvqvMp61qqDcP1teQZ6OQYy-sXaTo59wOFndfrYe91JjJOF3xPNaJ-3P4FIXfojLCHwYf1EG7AZrkiS3PKs6HmFBLBz1nZbi3jmgZkERbdvGBhZoDambY1dXEaKMpVxq8FGHChSq4TsD5UsTDCld9Z7gSgdfZz9EaO7YRqigBZtnpr87rMU77ICNLtl56KkZk4IHxalhDjF5ZrAulhg'
 	function getImage() {
 
 	}
