@@ -1507,6 +1507,8 @@ footer {
 
 footer .logo {
   margin-bottom: 20px;
+  color: white;
+  font-size: 24px;
 }
 
 footer ul li {
@@ -2301,7 +2303,7 @@ responsive
 
 #preloader {
   overflow: hidden;
-  background-color: #2a2a2a;
+  /* background-color: #2a2a2a; */
   left: 0;
   right: 0;
   top: 0;
