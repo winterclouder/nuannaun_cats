@@ -221,8 +221,8 @@
 																	<img src='${v.link}'>
 																</div>
 																<div class="down-content">
-																	<h4>Classic Spring</h4>
-																	<span>$110.00</span>
+																	<h4>${v.title}</h4>
+																	<span>${v.description}</span>
 																	<ul class="stars">
 																		<li><i class="fa fa-star"></i></li>
 																		<li><i class="fa fa-star"></i></li>
