@@ -1,76 +1,76 @@
 (function ($) {
-	
+
 	"use strict";
 
 	$('.owl-men-item').owlCarousel({
-		items:5,
-		loop:true,
+		items: 10,
+		loop: true,
 		dots: true,
 		nav: true,
-		margin:30,
-		  responsive:{
-			  0:{
-				  items:1
-			  },
-			  600:{
-				  items:2
-			  },
-			  1000:{
-				  items:3
-			  }
-		 }
+		margin: 30,
+		responsive: {
+			0: {
+				items: 1
+			},
+			600: {
+				items: 2
+			},
+			1000: {
+				items: 3
+			}
+		}
 	})
 
 	$('.owl-women-item').owlCarousel({
-		items:5,
-		loop:true,
+		items: 10,
+		loop: true,
 		dots: true,
 		nav: true,
-		margin:30,
-		  responsive:{
-			  0:{
-				  items:1
-			  },
-			  600:{
-				  items:2
-			  },
-			  1000:{
-				  items:3
-			  }
-		 }
-	 })
+		margin: 30,
+		responsive: {
+			0: {
+				items: 1
+			},
+			600: {
+				items: 2
+			},
+			1000: {
+				items: 3
+			}
+		}
+	})
 
 	$('.owl-kid-item').owlCarousel({
-		items:5,
-		loop:true,
+		items: 10,
+		loop: true,
 		dots: true,
 		nav: true,
-		margin:30,
-		  responsive:{
-			  0:{
-				  items:1
-			  },
-			  600:{
-				  items:2
-			  },
-			  1000:{
-				  items:3
-			  }
-		 }
-	 })
+		margin: 30,
+		responsive: {
+			0: {
+				items: 1
+			},
+			600: {
+				items: 2
+			},
+			1000: {
+				items: 3
+			}
+		}
+	})
 
-	$(window).scroll(function() {
-	  var scroll = $(window).scrollTop();
-	  var box = $('#top').height();
-	  var header = $('header').height();
+	$(window).scroll(function () {
+		var scroll = $(window).scrollTop();
+		var box = $('#top').height();
+		var header = $('header').height();
 
-	  if (scroll >= box - header) {
-	    $("header").addClass("background-header");
-	  } else {
-	    $("header").removeClass("background-header");
-	  }
+		if (scroll >= box - header) {
+			$("header").addClass("background-header");
+		} else {
+			$("header").removeClass("background-header");
+		}
 	});
-	
+
 
 	// Window Resize Mobile Menu Fix
 	mobileNav();
@@ -78,35 +78,35 @@
 
 	// Scroll animation init
 	window.sr = new scrollReveal();
-	
+
 	let leftFirstImages = [
 		"https://i.imgur.com/e2g6VFi.jpg"
 	]
 	let rightFirstInfos = [
 		{
-			name: '大胖',
-			localtion: '碇內吊橋',
+			name: '無碼',
+			localtion: '最新的無碼照片，都會顯示在這裡',
 			context: 'hello',
 			url: "#",
 			image: "https://i.imgur.com/Ia0XceQ.jpg",
 		},
 		{
-			name: '大胖',
-			localtion: '碇內吊橋',
+			name: '高清',
+			localtion: '熱門觀看的高清照片，都會在這裡',
 			context: 'hello',
 			url: "#",
 			image: "https://i.imgur.com/PtXWv3C.jpg",
 		},
 		{
-			name: '大胖',
-			localtion: '碇內吊橋',
+			name: '露毛',
+			localtion: '最新的露毛 照片，都會顯示在這裡',
 			context: 'hello',
 			url: "#",
 			image: "https://i.imgur.com/i0wYyJT.jpg",
 		},
 		{
-			name: '大胖',
-			localtion: '碇內吊橋',
+			name: '偷拍',
+			localtion: '無碼 露毛 高清 照片',
 			context: 'hello',
 			url: "#",
 			image: "https://i.imgur.com/y0sfdvF.jpg"
@@ -114,10 +114,12 @@
 
 	]
 	let menInfos = []
+	let womenInfos = []
+	let kidInfos = []
 
 	// Menu Dropdown Toggle
-	if($('.menu-trigger').length){
-		$(".menu-trigger").on('click', function() {	
+	if ($('.menu-trigger').length) {
+		$(".menu-trigger").on('click', function () {
 			$(this).toggleClass('active');
 			$('.header-area .nav').slideToggle(200);
 		});
@@ -125,16 +127,16 @@
 
 
 	// Menu elevator animation
-	$('.scroll-to-section a[href*=\\#]:not([href=\\#])').on('click', function() {
-		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	$('.scroll-to-section a[href*=\\#]:not([href=\\#])').on('click', function () {
+		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
 			var target = $(this.hash);
-			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 			if (target.length) {
 				var width = $(window).width();
-				if(width < 991) {
+				if (width < 991) {
 					$('.menu-trigger').removeClass('active');
-					$('.header-area .nav').slideUp(200);	
-				}				
+					$('.header-area .nav').slideUp(200);
+				}
 				$('html,body').animate({
 					scrollTop: (target.offset().top) - 80
 				}, 700);
@@ -143,125 +145,176 @@
 		}
 	});
 
-	$(document).ready(  function  () {
-	    // $(document).on("scroll", onScroll);
-			const album = '24xI7sL'
-			const settingsList = {
-				"async": true,
-				"crossDomain": true,
-				"url": 	`https://api.imgur.com/3/album/${album}/images`,
-				"method": "GET",
-				"headers": {
-					"Authorization": 'Bearer ' + ACCESSTOKEN
-				}
-			}
-			$.ajax(settingsList).done(
-				function(res)  { 
-					menInfos = res.data
-					console.log(menInfos, 'data')
-	    //smoothscroll
-	    $('.scroll-to-section a[href^="#"]').on('click', function (e) {
-	        e.preventDefault();
-	        $(document).off("scroll");
-	        
-	        $('.scroll-to-section a').each(function () {
-	            $(this).removeClass('active');
-	        })
-	        $(this).addClass('active');
-	      
-	        var target = this.hash,
-	        menu = target;
-	       	var target = $(this.hash);
-	        $('html, body').stop().animate({
-	            scrollTop: (target.offset().top) - 79
-	        }, 500, 'swing', function () {
-	            window.location.hash = target;
-	            $(document).on("scroll", onScroll);
-	        });
-	    });
+	$(document).ready(function () {
+		// $(document).on("scroll", onScroll);
+		//smoothscroll
+		$('.scroll-to-section a[href^="#"]').on('click', function (e) {
+			e.preventDefault();
+			$(document).off("scroll");
 
-			      // Right up images 
-				const row = $('#right-content').children('.row')
-				$.each(rightFirstInfos, (i, v) => {
-					const contenet = `<div class="col-lg-6">
-																			<div class="right-first-image">
-																			<div class="thumb">
-																					<div class="inner-content">
-																							<h4>${v.name}</h4>
-																							<span>${v.localtion}</span>
-																					</div>
-																					<div class="hover-content">
-																							<div class="inner">
+			$('.scroll-to-section a').each(function () {
+				$(this).removeClass('active');
+			})
+			$(this).addClass('active');
+
+			var target = this.hash,
+				menu = target;
+			var target = $(this.hash);
+			$('html, body').stop().animate({
+				scrollTop: (target.offset().top) - 79
+			}, 500, 'swing', function () {
+				window.location.hash = target;
+				$(document).on("scroll", onScroll);
+			});
+		});
+
+		// Right up images 
+		const row = $('#right-content').children('.row')
+		$.each(rightFirstInfos, (i, v) => {
+			const contenet = `<div class="col-lg-6">
+																					<div class="right-first-image">
+																					<div class="thumb">
+																							<div class="inner-content">
 																									<h4>${v.name}</h4>
-																									<p>${v.name}
-																									</p>
-																									98989
-																									<div class="main-border-button">
-																											<a href="${v.url}">Discover More</a>
+																									<span>${v.localtion}</span>
+																							</div>
+																							<div class="hover-content">
+																									<div class="inner">
+																											<h4>${v.name}</h4>
+																											<p>${v.name}
+																											</p>
+																											98989
+																											<div class="main-border-button">
+																													<a href="${v.url}">Discover More</a>
+																											</div>
 																									</div>
 																							</div>
+																							<img src ='${v.image}'>
 																					</div>
-																					<img src ='${v.image}'>
-																			</div>
-																		</div>
-																	</div>`
-					row.prepend(contenet)
-				})
-	
-						let arr = []
-						$.each(menInfos, (i, v) => {
-							console.log(v, '1')
-							let contenet = `<div class="item">
+																				</div>
+																			</div>`
+			row.prepend(contenet)
+		})
+		const womenSettingsList = {
+			"async": true,
+			"crossDomain": true,
+			"url": `https://api.imgur.com/3/album/Bf9Co8J/images`,
+			"method": "GET",
+			"headers": {
+				"Authorization": 'Bearer ' + ACCESSTOKEN
+			}
+		}
+		$.ajax(womenSettingsList).done(
+			function (res) {
+				womenInfos = res.data.slice(0, 10)
+				$.each(womenInfos, (i, v) => {
+					let contenet = `<div class="item">
 																<div class="thumb">
 																	<div class="hover-content">
 																		<ul>
 																			<li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
 																		</ul>
 																	</div>
-																	<img src='${v.link}'>
+																	<a href='${v.link}' data-lightbox="group_dog"><img src='https://i.imgur.com/${v.id}m.jpg'></a>
+																	
 																</div>
-																<div class="down-content">
+																<div class="down-content" >
 																	<h4>${v.title}</h4>
 																	<span>${v.description}</span>
 																	<ul class="stars">
-																		<li><i class="fa fa-star"></i></li>
-																		<li><i class="fa fa-star"></i></li>
-																		<li><i class="fa fa-star"></i></li>
-																		<li><i class="fa fa-star"></i></li>
-																		<li><i class="fa fa-star"></i></li>
+																		<li><i class="fa fa-eye">${v.views}</i></li>
 																	</ul>
 																</div>
 															</div>`
-								$('.owl-men-item').trigger('add.owl.carousel', contenet)
-								$('.owl-women-item').trigger('add.owl.carousel', contenet)
-								$('.owl-kid-item').trigger('add.owl.carousel', contenet)
-						})
-			
-						$('.owl-men-item').trigger('refresh.owl.carousel');
-						$('.owl-women-item').trigger('refresh.owl.carousel');
-						$('.owl-kid-item').trigger('refresh.owl.carousel');
-	});
+					$('.owl-women-item').trigger('add.owl.carousel', contenet)
+				})
+			})
+
+			const menSettingsList = {
+				"async": true,
+				"crossDomain": true,
+				"url": `https://api.imgur.com/3/album/24xI7sL/images`,
+				"method": "GET",
+				"headers": {
+					"Authorization": 'Bearer ' + ACCESSTOKEN
+				}
+			}
+
+		$.ajax(menSettingsList).done(
+			function (res) {
+				menInfos = res.data.slice(0, 10)
+
+
+				$.each(menInfos, (i, v) => {
+					let contenet = `<div class="item">
+																<div class="thumb">
+																	<div class="hover-content">
+																		<ul>
+																			<li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
+																		</ul>
+																	</div>
+																	<a href='${v.link}' data-lightbox="group_cat"><img src='https://i.imgur.com/${v.id}m.jpg'></a>
+																	
+																</div>
+																<div class="down-content" >
+																	<h4>${v.title}</h4>
+																	<span>${v.description}</span>
+																	<ul class="stars">
+																		<li><i class="fa fa-eye">${v.views}</i></li>
+																	</ul>
+																</div>
+															</div>`
+					$('.owl-men-item').trigger('add.owl.carousel', contenet)
+				})
+
+				$.each(kidInfos, (i, v) => {
+					let contenet = `<div class="item">
+																<div class="thumb">
+																	<div class="hover-content">
+																		<ul>
+																			<li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
+																		</ul>
+																	</div>
+																	<a href='${v.link}' data-lightbox="group_3"><img src='${v.link}'></a>
+																	
+																</div>
+																<div class="down-content" >
+																	<h4>${v.title}</h4>
+																	<span>${v.description}</span>
+																	<ul class="stars">
+																		<li><i class="fa fa-eye">${v.views}</i></li>
+																	</ul>
+																</div>
+															</div>`
+					$('.owl-kid-item').trigger('add.owl.carousel', contenet)
+
+				})
+
+				$('.owl-men-item').trigger('refresh.owl.carousel');
+				$('.owl-women-item').trigger('refresh.owl.carousel');
+				$('.owl-kid-item').trigger('refresh.owl.carousel');
+			});
 	})
 
-	function onScroll(event){
-	    var scrollPos = $(document).scrollTop();
-	    $('.nav a').each(function () {
-	        var currLink = $(this);
-	        var refElement = $(currLink.attr("href"));
-	        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-	            $('.nav ul li a').removeClass("active");
-	            currLink.addClass("active");
-	        }
-	        else{
-	            currLink.removeClass("active");
-	        }
-	    });
+	function onScroll(event) {
+		var scrollPos = $(document).scrollTop();
+		$('.nav a').each(function () {
+			var currLink = $(this);
+			var refElement = $(currLink.attr("href"));
+			if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+				$('.nav ul li a').removeClass("active");
+				currLink.addClass("active");
+			}
+			else {
+				currLink.removeClass("active");
+			}
+		});
 	}
 
 
 	// Page loading animation
-	$(window).on('load', function() {
-		if($('.cover').length){
+	$(window).on('load', function () {
+		if ($('.cover').length) {
 			$('.cover').parallax({
 				imageSrc: $('.cover').data('image'),
 				zIndex: '1'
@@ -279,7 +332,7 @@
 
 
 	// Window Resize Mobile Menu Fix
-	$(window).on('resize', function() {
+	$(window).on('resize', function () {
 		mobileNav();
 	});
 
@@ -287,8 +340,8 @@
 	// Window Resize Mobile Menu Fix
 	function mobileNav() {
 		var width = $(window).width();
-		$('.submenu').on('click', function() {
-			if(width < 767) {
+		$('.submenu').on('click', function () {
+			if (width < 767) {
 				$('.submenu ul').removeClass('active');
 				$(this).find('ul').toggleClass('active');
 			}
