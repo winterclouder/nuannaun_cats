@@ -76,8 +76,8 @@ https://templatemo.com/tm-571-hexashop
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="inner-content">
-                        <h2>嚕嚕米</h2>
+                    <div class="inner-content" >
+                        <h2 class="role-name">嚕嚕米</h2>
                         <span>個人首頁及最新照片</span>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>嚕嚕米</h2>
+                        <h2 class="role-name">嚕嚕米</h2>
                         <span>個人首頁及最新照片</span>
                     </div>
                 </div>
@@ -200,7 +200,9 @@ https://templatemo.com/tm-571-hexashop
     <!-- <script src="assets/js/custom.js"></script> -->
 
     <script>
-         console.log('location')
+        const params = new URLSearchParams(location.search)
+         console.log(params.get('title'),'title')
+        
         $(function () {
             var selectedClass = "";
             $("p").click(function () {
@@ -215,11 +217,25 @@ https://templatemo.com/tm-571-hexashop
             });
         });
 	    const ACCESSTOKEN = 'bd0cb9b01c3f3cae3322ccce3e4a47d9bea4029b'
+        const id = params.get('id')
+        const title = params.get('title')
+        // ackground-image: url("../images/lulumi.jpg");
+        let imageURl = "url('./assets/images/dapang.jpg')"
 
+        if (title === '大胖') {
+            imageURl= "url('./assets/images/dapang.jpg')"
+        } else {
+            imageURl = "url('./assets/images/lulumi.jpg')"
+        }
+
+        $('#top').css('background-image',imageURl)
+
+        console.log(id)
+        $('.role-name').each((i,e) => e.innerHTML = title)
         const womenSettingsList = {
             "async": true,
             "crossDomain": true,
-            "url": `https://api.imgur.com/3/album/Bf9Co8J/images`,
+            "url": `https://api.imgur.com/3/album/${id}/images`,
             "method": "GET",
             "headers": {
                 "Authorization": 'Bearer ' + ACCESSTOKEN
@@ -230,7 +246,7 @@ https://templatemo.com/tm-571-hexashop
                 dogs = res.data.slice(0, 10)
                 const photos  = $('#photos')
                 $.each(dogs, (i, v) => {
-                    if (v.title === '嚕嚕米') {
+                    if (v.title === title) {
                         let contenet = `
                         <div class="col-lg-4">
                         <div class="item">

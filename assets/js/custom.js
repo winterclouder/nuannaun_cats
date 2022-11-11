@@ -88,7 +88,7 @@
 			localtion: '最新的無碼照片，都會顯示在這裡',
 			context: 'hello',
 			url: "#",
-			image: "https://i.imgur.com/Ma5Ha1m.jpg",
+			image: "https://i.imgur.com/Ia0XceQ.jpg",
 		},
 		{
 			name: '高清',
@@ -109,7 +109,7 @@
 			localtion: '無碼 露毛 高清 照片',
 			context: 'hello',
 			url: "#",
-			image: "https://i.imgur.com/y0sfdvF.jpg"
+			image: "https://i.imgur.com/Rucgenx.jpg"
 		}
 
 	]
@@ -189,7 +189,7 @@
 																											</div>
 																									</div>
 																							</div>
-																							<img src ='${v.image}'>
+																							<img src='${v.image}'>
 																					</div>
 																				</div>
 																			</div>`
@@ -308,7 +308,7 @@
 																			<li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
 																		</ul>
 																	</div>
-																	<a href='${v.link}' data-lightbox="${groupId}"><img src='https://i.imgur.com/${v.id}m.jpg'></a>
+																	<a href='${v.link}' data-lightbox="${groupId}"><img style="border-radius: 260px" src='https://i.imgur.com/${v.id}m.jpg'></a>
 																	
 																</div>
 																<div class="down-content" >
