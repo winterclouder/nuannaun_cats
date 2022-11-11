@@ -88,14 +88,14 @@
 			localtion: '最新的無碼照片，都會顯示在這裡',
 			context: 'hello',
 			url: "#",
-			image: "https://i.imgur.com/Ia0XceQ.jpg",
+			image: "https://i.imgur.com/Ma5Ha1m.jpg",
 		},
 		{
 			name: '高清',
 			localtion: '熱門觀看的高清照片，都會在這裡',
 			context: 'hello',
 			url: "#",
-			image: "https://i.imgur.com/PtXWv3C.jpg",
+			image: "https://i.imgur.com/KsvLEz7.jpg",
 		},
 		{
 			name: '露毛',
@@ -195,105 +195,11 @@
 																			</div>`
 			row.prepend(contenet)
 		})
-		const womenSettingsList = {
-			"async": true,
-			"crossDomain": true,
-			"url": `https://api.imgur.com/3/album/Bf9Co8J/images`,
-			"method": "GET",
-			"headers": {
-				"Authorization": 'Bearer ' + ACCESSTOKEN
-			}
-		}
-		$.ajax(womenSettingsList).done(
-			function (res) {
-				womenInfos = res.data.slice(0, 10)
-				$.each(womenInfos, (i, v) => {
-					let contenet = `<div class="item">
-																<div class="thumb">
-																	<div class="hover-content">
-																		<ul>
-																			<li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-																		</ul>
-																	</div>
-																	<a href='${v.link}' data-lightbox="group_dog"><img src='https://i.imgur.com/${v.id}m.jpg'></a>
-																	
-																</div>
-																<div class="down-content" >
-																	<h4>${v.title}</h4>
-																	<span>${v.description}</span>
-																	<ul class="stars">
-																		<li><i class="fa fa-eye">${v.views}</i></li>
-																	</ul>
-																</div>
-															</div>`
-					$('.owl-women-item').trigger('add.owl.carousel', contenet)
-				})
-			})
 
-			const menSettingsList = {
-				"async": true,
-				"crossDomain": true,
-				"url": `https://api.imgur.com/3/album/24xI7sL/images`,
-				"method": "GET",
-				"headers": {
-					"Authorization": 'Bearer ' + ACCESSTOKEN
-				}
-			}
+		appendElemmtOnDom('Bf9Co8J','group_woman','.owl-women-item', 'owl-women')
+		appendElemmtOnDom('24xI7sL','group_men','.owl-men-item', 'men-item')
+		// appendElemmtOnDom('24xI7sL','group_kid','.owl-kid-item')
 
-		$.ajax(menSettingsList).done(
-			function (res) {
-				menInfos = res.data.slice(0, 10)
-
-
-				$.each(menInfos, (i, v) => {
-					let contenet = `<div class="item">
-																<div class="thumb">
-																	<div class="hover-content">
-																		<ul>
-																			<li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-																		</ul>
-																	</div>
-																	<a href='${v.link}' data-lightbox="group_cat"><img src='https://i.imgur.com/${v.id}m.jpg'></a>
-																	
-																</div>
-																<div class="down-content" >
-																	<h4>${v.title}</h4>
-																	<span>${v.description}</span>
-																	<ul class="stars">
-																		<li><i class="fa fa-eye">${v.views}</i></li>
-																	</ul>
-																</div>
-															</div>`
-					$('.owl-men-item').trigger('add.owl.carousel', contenet)
-				})
-
-				$.each(kidInfos, (i, v) => {
-					let contenet = `<div class="item">
-																<div class="thumb">
-																	<div class="hover-content">
-																		<ul>
-																			<li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-																		</ul>
-																	</div>
-																	<a href='${v.link}' data-lightbox="group_3"><img src='${v.link}'></a>
-																	
-																</div>
-																<div class="down-content" >
-																	<h4>${v.title}</h4>
-																	<span>${v.description}</span>
-																	<ul class="stars">
-																		<li><i class="fa fa-eye">${v.views}</i></li>
-																	</ul>
-																</div>
-															</div>`
-					$('.owl-kid-item').trigger('add.owl.carousel', contenet)
-
-				})
-
-				$('.owl-men-item').trigger('refresh.owl.carousel');
-				$('.owl-women-item').trigger('refresh.owl.carousel');
-				$('.owl-kid-item').trigger('refresh.owl.carousel');
-			});
 	})
 
 	function onScroll(event) {
@@ -380,6 +286,44 @@
 	// 		alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。')
 	// 	});
 	// }
+	function appendElemmtOnDom(id, groupId, refreshId, pId) {
 
+		const settingsList = {
+			"async": true,
+			"crossDomain": true,
+			"url": `https://api.imgur.com/3/album/${id}/images`,
+			"method": "GET",
+			"headers": {
+				"Authorization": 'Bearer ' + ACCESSTOKEN
+			}
+		}
+		$.ajax(settingsList).done(
+			function (res) {
+				const infos = res.data.reverse()
+				$.each(infos, (i, v) => {
+					let contenet = `<div class="item">
+																<div class="thumb">
+																	<div class="hover-content">
+																		<ul>
+																			<li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
+																		</ul>
+																	</div>
+																	<a href='${v.link}' data-lightbox="${groupId}"><img src='https://i.imgur.com/${v.id}m.jpg'></a>
+																	
+																</div>
+																<div class="down-content" >
+																	<h4>${v.title}</h4>
+																	<span>${v.description}</span>
+																	<ul class="stars">
+																		<li><i class="fa fa-eye">${v.views}</i></li>
+																	</ul>
+																</div>
+															</div>`
+					$(refreshId).trigger('add.owl.carousel', contenet)
+					$(refreshId).trigger('refresh.owl.carousel');
+				})
+			})
+		// $(pId).trigger('refresh.owl.carousel');
+	}
 
 })(window.jQuery);
