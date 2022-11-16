@@ -117,8 +117,7 @@
 	]
 	let menInfos = []
 	let womenInfos = []
-	let kidInfos = []
-
+	let all = []
 	// Menu Dropdown Toggle
 	if ($('.menu-trigger').length) {
 		$(".menu-trigger").on('click', function () {
@@ -200,7 +199,10 @@
 
 		appendElemmtOnDom('Bf9Co8J','group_woman','.owl-women-item', 'owl-women')
 		appendElemmtOnDom('24xI7sL','group_men','.owl-men-item', 'men-item')
-		// appendElemmtOnDom('24xI7sL','group_kid','.owl-kid-item')
+		setTimeout(() => {
+			appendElemmtOnDom('all','group_kid','.owl-kid-item')
+			
+		}, 1000);
 
 	})
 
@@ -284,8 +286,49 @@
 	// 		alert('上傳完成，稍待一會兒就可以在底部的列表上看見了。')
 	// 	});
 	// }
-	function appendElemmtOnDom(id, groupId, refreshId, pId) {
 
+	function shuffleArray(array) {
+		for (var i = array.length - 1; i > 0; i--) {
+
+				// Generate random number
+				var j = Math.floor(Math.random() * (i + 1));
+
+				var temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+		}
+
+		return array;
+	}
+	function appendElemmtOnDom(id, groupId, refreshId, pId) {
+		if (id === 'all') {
+			all = shuffleArray(all).slice(0, 20)
+			$.each(all, (i, v) => {
+				const title = v.title ?? ''
+				const description = v.description ?? ''
+				let contenet = `<div class="item">
+															<div class="thumb">
+																<div class="hover-content">
+																	<ul>
+																		<li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
+																	</ul>
+																</div>
+																<a href='${v.link}' data-lightbox="${groupId}"><img style="border-radius: 260px" src='https://i.imgur.com/${v.id}m.jpg'></a>
+																
+															</div>
+															<div class="down-content" >
+																<h4>${title}</h4>
+																<span>${description}</span>
+																<ul class="stars">
+																	<li><i class="fa fa-eye">${v.views}</i></li>
+																</ul>
+															</div>
+														</div>`
+				$(refreshId).trigger('add.owl.carousel', contenet)
+				$(refreshId).trigger('refresh.owl.carousel');
+			})
+			return 
+		}
 		const settingsList = {
 			"async": true,
 			"crossDomain": true,
@@ -297,7 +340,9 @@
 		}
 		$.ajax(settingsList).done(
 			function (res) {
-				const infos = res.data.reverse()
+				let infos = res.data.reverse()
+				all = all.concat(infos)
+				infos.slice(0, 20)
 				$.each(infos, (i, v) => {
 					const title = v.title ?? ''
 					const description = v.description ?? ''
