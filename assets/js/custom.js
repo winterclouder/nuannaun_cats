@@ -3,6 +3,7 @@
 	"use strict";
 
 	$('.owl-men-item').owlCarousel({
+		lazyLoad:true,
 		items: 10,
 		loop: true,
 		dots: true,
@@ -22,6 +23,7 @@
 	})
 
 	$('.owl-women-item').owlCarousel({
+		lazyLoad:true,
 		items: 10,
 		loop: true,
 		dots: true,
@@ -254,10 +256,6 @@
 		});
 	}
 	const ACCESSTOKEN = 'bd0cb9b01c3f3cae3322ccce3e4a47d9bea4029b'
-	const REFRESHTOKEN = '7237de6b05ba4da652b1c740a690e3d96724986f'
-	function getImage() {
-
-	}
 
 	// function submit() {
 	// 	let settings = {
@@ -301,6 +299,8 @@
 			function (res) {
 				const infos = res.data.reverse()
 				$.each(infos, (i, v) => {
+					const title = v.title ?? ''
+					const description = v.description ?? ''
 					let contenet = `<div class="item">
 																<div class="thumb">
 																	<div class="hover-content">
@@ -312,8 +312,8 @@
 																	
 																</div>
 																<div class="down-content" >
-																	<h4>${v.title}</h4>
-																	<span>${v.description}</span>
+																	<h4>${title}</h4>
+																	<span>${description}</span>
 																	<ul class="stars">
 																		<li><i class="fa fa-eye">${v.views}</i></li>
 																	</ul>
